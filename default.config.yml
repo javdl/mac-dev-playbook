@@ -25,28 +25,38 @@ dotfiles_files:
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
   - autoconf
+  - baobab # disk usage analyzer
   - bash-completion
-  - doxygen
+  - erlang
   - gettext
   - gifsicle
   - git
   - github/gh/gh
+  - glab
   - go
   - gpg
+  - htop
   - httpie
+  - hugo
+  - imagemagick
   - iperf
   - libevent
   - sqlite
   - mcrypt
+  - nethogs
   - nmap
   - node
   - nvm
-  - php
+  - p7zip
   - ssh-copy-id
   - cowsay
   - readline
+  - terraform
+  - tmux
+  - thefuck
   - openssl
   - pv
+  - webp
   - wget
   - wrk
 
@@ -56,18 +66,29 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - authy
+  - calibre
   - chromedriver
+  - darktable
   - docker
+  - digikam
   - dropbox
   - firefox
+  - gimp
   - google-chrome
+  - google-cloud-sdk
+  - google-photos-backup-and-sync
   - handbrake
+  - inkscape
   - licecap
+  - postman
   - sequel-pro
-  - slack
+  - signal
+  - spotify
   - sublime-text
-  - transmit
-  - vagrant
+  - thunderbird
+  - visual-studio-code
+  - vlc
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
@@ -87,7 +108,15 @@ gem_packages: []
 # - name: bundler
 #   state: present # present/absent/latest, default: present
 #   version: "~> 1.15.1" # default: N/A
-npm_packages: []
+npm_packages:
+  - name: lerna
+  - name: firebase-tools
+  - name: webpack
+  - name: webpack-cli
+  - name: eslint
+  - name: sqip
+
+
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A
