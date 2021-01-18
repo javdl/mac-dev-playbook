@@ -22,8 +22,10 @@ dotfiles_files:
   - .osx
   - .vimrc
 
-homebrew_installed_packages:
-  # - ansible # Installed via Pip.
+
+homebrew_prefix: /opt/homebrew # /usr/local [default] for macOS Intel, /opt/homebrew for Apple Silicon
+
+homebrew_installed_packages: # - ansible # Installed via Pip.
   - autoconf
   - baobab # disk usage analyzer
   - bash-completion
@@ -31,7 +33,7 @@ homebrew_installed_packages:
   - gettext
   - gifsicle
   - git
-  - github/gh/gh
+  - gh
   - glab
   - go
   - gpg
@@ -40,7 +42,9 @@ homebrew_installed_packages:
   - hugo
   - imagemagick
   - iperf
+  - jq
   - libevent
+  - pandoc
   - sqlite
   - mcrypt
   - nethogs
@@ -67,19 +71,22 @@ homebrew_taps:
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - authy
+  - bitwarden
   - calibre
   - chromedriver
   - darktable
   - docker
   - digikam
   - dropbox
+  - figma
   - firefox
   - gimp
   - google-chrome
-  - google-cloud-sdk
+  - google-drive-file-stream
   - google-photos-backup-and-sync
   - handbrake
   - inkscape
+  - libreoffice
   - licecap
   - postman
   - sequel-pro
