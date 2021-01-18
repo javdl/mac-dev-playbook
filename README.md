@@ -106,14 +106,23 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
 
   1. Turn on **FileVault** under Security & Privacy preferences.
   1. **[Generate SSH key](https://docs.gitlab.com/ee/ssh/#ed25519-ssh-keys)** and add to GitLab & GitHub
+  1. setup git details
+      ```
+      git config --global user.name "Your Name" /
+      git config --global user.email you@example.com
+      ```
   1. Install [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
       - Download and extract, `cd ~/Downloads && ./google-cloud-sdk/install.sh`
   1. Install [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy#install)
-      - `cd ~ && curl -o cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.darwin.amd64 && chmod +x cloud_sql_proxy`
+      ```
+      cd ~ && curl -o cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.darwin.amd64 && chmod +x cloud_sql_proxy
+      ```
   1. Add Sublime text key
   1. Add GitLab token for glab CLI tool `glab auth login` [GitLab Access Tokens](https://gitlab.com/-/profile/personal_access_tokens)
   1. Clone all git repos. For every gitlab project in a group, use this one liner with curl, jq, tr
-`for repo in $(curl -s --header "PRIVATE-TOKEN: your_private_token" https://<your-host>/api/v4/groups/<group_id> | jq ".projects[].ssh_url_to_repo" | tr -d '"'); do git clone $repo; done;`
+      ```
+      for repo in $(curl -s --header "PRIVATE-TOKEN: your_private_token" https://<your-host>/api/v4/groups/<group_id> | jq ".projects[].ssh_url_to_repo" | tr -d '"'); do git clone $repo; done;
+      ```
 For Gitlab.com use https://gitlab.com/api/v4/groups/<group_id>
   1. `nvm install --lts` (and edit `vi ~/.zshrc` to add nvm or through dotfiles)
   1. Add mail accounts to Thunderbird, addons:
