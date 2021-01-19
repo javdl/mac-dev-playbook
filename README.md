@@ -120,16 +120,17 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
   1. Add Sublime text key
   1. Add GitLab token for glab CLI tool `glab auth login` [GitLab Access Tokens](https://gitlab.com/-/profile/personal_access_tokens)
   1. Clone all git repos. For every gitlab project in a group, use this one liner with curl, jq, tr
-      ```
-      for repo in $(curl -s --header "PRIVATE-TOKEN: your_private_token" https://<your-host>/api/v4/groups/<group_id> | jq ".projects[].ssh_url_to_repo" | tr -d '"'); do git clone $repo; done;
-      ```
-For Gitlab.com use https://gitlab.com/api/v4/groups/<group_id>
+     ```
+     for repo in $(curl -s --header "PRIVATE-TOKEN: your_private_token" https://<your-host>/api/v4/groups/<group_id> | jq ".projects[].ssh_url_to_repo" | tr -d '"'); do git clone $repo; done;
+     ```
+     For Gitlab.com use https://gitlab.com/api/v4/groups/<group_id>
   1. `nvm install --lts` (and edit `vi ~/.zshrc` to add nvm or through dotfiles)
   1. Add mail accounts to Thunderbird, addons:
       - [Nederlands woordenboek](https://addons.thunderbird.net/en-US/thunderbird/addon/woordenboek-nederlands/)
       - [DKIM verifier](https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/?src=search)
       - [Thunderbird Conversations view](https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/) &ndash; makes mailbox more efficient & checks settings like offline storage, global search etc.
-      - [Quicktext](https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/) &ndash; Templates
+      - [Quicktext](https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/) &ndash; Templates\
+  1. Download books and put into Calibre
   
   1. Set JJG-Term as the default Terminal theme (it's installed, but not set as default automatically).
   2. Install [Sublime Package Manager](http://sublime.wbond.net/installation).
