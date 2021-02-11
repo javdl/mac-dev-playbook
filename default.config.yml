@@ -12,18 +12,27 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
+dotfiles_repo: https://gitlab.com/joostl/dotfiles.git
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+dotfiles_repo_local_destination: ~/.dotfiles
 dotfiles_files:
-  - .zshrc
-  - .gitignore
-  - .inputrc
-  - .osx
-  - .vimrc
-
-
-homebrew_prefix: /opt/homebrew # /usr/local [default] for macOS Intel, /opt/homebrew for Apple Silicon
+  - inputrc
+  - osx
+  - bashrc
+  - bigqueryrc
+  - bin
+  - gitconfig
+  - gitignore
+  - gitmessage
+  - git_template
+  - todo.cfg
+  - tmux.conf
+  - vim
+  - vimrc
+  - vimrc.bundles
+  - zshenv
+  - zshrc
+  - zsh
 
 homebrew_installed_packages: # - ansible # Installed via Pip.
   - autoconf
@@ -41,10 +50,10 @@ homebrew_installed_packages: # - ansible # Installed via Pip.
   - httpie
   - hugo
   - imagemagick
-  - iperf
+  # - iperf
   - jq
   - libevent
-  - pandoc
+  # - pandoc
   - sqlite
   - mcrypt
   - nethogs
@@ -55,19 +64,21 @@ homebrew_installed_packages: # - ansible # Installed via Pip.
   - ssh-copy-id
   - cowsay
   - readline
-  - terraform
+  # - terraform
   - tmux
   - thefuck
   - openssl
   - pv
   - webp
   - wget
-  - wrk
+  # - wrk
 
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
 
+homebrew_cask_uninstalled_apps: []
+homebrew_cask_accept_external_apps: false
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - authy
@@ -82,7 +93,7 @@ homebrew_cask_apps:
   - firefox
   - gimp
   - google-chrome
-  - google-drive-file-stream
+  # - google-drive-file-stream
   - google-photos-backup-and-sync
   - handbrake
   - inkscape

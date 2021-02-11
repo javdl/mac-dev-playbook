@@ -32,7 +32,12 @@ This is a work in progress, and is mostly a means for me to document my current 
           ```bash
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           ```
-          Add Homebrew to your **PATH** (the installer will tell you to)
+          Add Homebrew to your **PATH**: (the installer will tell you to)
+          ```
+          echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
+          eval $(/opt/homebrew/bin/brew shellenv)
+          ```
+          Install Rust:
           ```
           brew install openssl@1.1 rust
           ```
@@ -165,10 +170,20 @@ You can also set arch on Mac by using `arch -x86_64 brew remove <package>`
 
 Also, could not get brew packages installed quickly. For now used directly instead of ansible script:
 
+```bash
 sudo chown -R $(whoami) /opt/homebrew
 chmod u+w /opt/homebrew
+```
 
+## Manual install
+
+```
 brew install autoconf baobab bash-completion erlang gettext gifsicle git gh glab go gpg htop httpie hugo imagemagick iperf libevent pandoc sqlite mcrypt nethogs nmap node nvm p7zip ssh-copy-id cowsay readline terraform tmux thefuck openssl pv webp wget wrk
+```
+
+```
+brew install authy bitwarden calibre chromedriver darktable docker digikam dropbox figma firefox gimp google-chrome google-drive-file-stream google-photos-backup-and-sync handbrake inkscape libreoffice licecap postman sequel-pro signal spotify sublime-text thunderbird visual-studio-code vlc
+```
 
 ### Configuration to be added:
 

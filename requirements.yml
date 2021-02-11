@@ -1,4 +1,7 @@
 ---
+roles:
 - name: geerlingguy.dotfiles
-- name: geerlingguy.homebrew
 - name: geerlingguy.mas
+
+collections:
+- name: community.general # includes homebrew
