@@ -28,6 +28,11 @@ This is a work in progress, and is mostly a means for me to document my current 
       # install ansible
       python3 -m pip install --user ansible
       ```
+       1. In case of cryptography.io complaining about missing Rust: 
+          ```bash
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install openssl@1.1 rust
+          ```
   3. Clone this repository to your local drive. `git clone https://github.com/Joostvanderlaan/mac-dev-playbook.git`
   4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
   5. Run `ansible-playbook main.yml -i inventory --ask-become-pass` inside this directory. Enter your account password when prompted. Or only the homebrew stuff with `ansible-playbook main.yml -i inventory -K --tags "homebrew" --ask-become-pass`
