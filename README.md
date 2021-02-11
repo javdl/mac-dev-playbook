@@ -31,9 +31,12 @@ This is a work in progress, and is mostly a means for me to document my current 
        1. In case of cryptography.io complaining about missing Rust: 
           ```bash
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          ```
+          Add Homebrew to your **PATH** (the installer will tell you to)
+          ```
           brew install openssl@1.1 rust
           ```
-          Add Homebrew to your **PATH**
+          install cryptography using openssl as MacOS uses LibreSSL:
           ```bash
           env LDFLAGS="-L$(brew --prefix openssl@1.1)/lib" CFLAGS="-I$(brew --prefix openssl@1.1)/include" pip install cryptography
           ```
