@@ -34,6 +34,9 @@ This is a work in progress, and is mostly a means for me to document my current 
           brew install openssl@1.1 rust
           ```
           Add Homebrew to your **PATH**
+          ```bash
+          env LDFLAGS="-L$(brew --prefix openssl@1.1)/lib" CFLAGS="-I$(brew --prefix openssl@1.1)/include" pip install cryptography
+          ```
           Re-run the ansible install above
   3. Clone this repository to your local drive. `git clone https://github.com/Joostvanderlaan/mac-dev-playbook.git`
   4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
