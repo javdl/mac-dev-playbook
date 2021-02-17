@@ -20,8 +20,12 @@
 
   tasks:
     # - include_tasks: tasks/ansible-setup.yml
-    
+
+    # - include_tasks: tasks/hostname.yml # (linux only)
+    #   tags: ['hostname']
+
     - include_tasks: tasks/homebrew.yml
+      tags: ['homebrew']
 
     - include_tasks: tasks/sudoers.yml
       when: configure_sudoers
@@ -29,12 +33,12 @@
     # - include_tasks: tasks/terminal.yml
     #   when: configure_terminal
 
-    - include_tasks: tasks/osx.yml
-      when: configure_osx
-      tags: ['osx']
+    # - include_tasks: tasks/osx.yml
+    #   when: configure_osx
+    #   tags: ['osx']
 
-    - include_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages']
+    # - include_tasks: tasks/extra-packages.yml # does not work with M1 macs. "msg": "Failed to find required executable npm in paths: /usr/bin:/bin:/usr/sbin:/sbin"} while npm is installed in /opt/homebrew/bin/npm
+    #   tags: ['extra-packages']
 
     - name: Run configured post-provision ansible task files.
       include_tasks: "{{ outer_item }}"

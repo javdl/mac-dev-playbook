@@ -1,6 +1,2 @@
 #[all]
 #127.0.0.1  ansible_connection=local
-
-[macjes]
-# 172.20.48.3 ansible_user=fuadmin # 058fu
-fu093.hq.fuww.nl ansible_user=fuadmin # 172.20.48.7
