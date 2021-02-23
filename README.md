@@ -154,17 +154,18 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
       git clone https://github.com/rupa/z ~/git/z
       echo ". ~/git/z/z.sh" >> ~/.bashrc
       echo ". ~/git/z/z.sh" >> ~/.zshrc
+      touch ~/.z
       exec $SHELL
       ```
       Usage is very easy, after cding into various directories, for example:
       ```
-      cd ~/development/web/project1
-      cd ~/development/mobile/client33
+      cd ~/git/handbook
+      cd ~/development/web/project2
       ```
       You can now cd into those directories from anywhere on the CLI with:
       ```
-      z project1
-      z client33
+      z handbook
+      z project2
       ```
   
   1. Set JJG-Term as the default Terminal theme (it's installed, but not set as default automatically).
