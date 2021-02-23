@@ -150,6 +150,7 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
       - [Quicktext](https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/) &ndash; Templates\
   1. Download books and put into Calibre
   2. setup git-sync for git repos that need auto-sync like notes repo
+  3. git-annex file management / backup folder sync, full overview
   
   1. Set JJG-Term as the default Terminal theme (it's installed, but not set as default automatically).
   2. Install [Sublime Package Manager](http://sublime.wbond.net/installation).
