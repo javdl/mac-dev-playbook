@@ -156,6 +156,16 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
       echo ". ~/git/z/z.sh" >> ~/.zshrc
       exec $SHELL
       ```
+      Usage is very easy, after cding into various directories, for example:
+      ```
+      cd ~/development/web/project1
+      cd ~/development/mobile/client33
+      ```
+      You can now cd into those directories from anywhere on the CLI with:
+      ```
+      z project1
+      z client33
+      ```
   
   1. Set JJG-Term as the default Terminal theme (it's installed, but not set as default automatically).
   2. Install [Sublime Package Manager](http://sublime.wbond.net/installation).
