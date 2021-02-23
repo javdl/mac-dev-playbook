@@ -149,6 +149,13 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
       - [Thunderbird Conversations view](https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/) &ndash; makes mailbox more efficient & checks settings like offline storage, global search etc.
       - [Quicktext](https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/) &ndash; Templates\
   1. Download books and put into Calibre
+  2. setup z
+      ```
+      git clone https://github.com/rupa/z ~/git/z
+      echo ". ~/git/z/z.sh" >> ~/.bashrc
+      echo ". ~/git/z/z.sh" >> ~/.zshrc
+      exec $SHELL
+      ```
   
   1. Set JJG-Term as the default Terminal theme (it's installed, but not set as default automatically).
   2. Install [Sublime Package Manager](http://sublime.wbond.net/installation).
