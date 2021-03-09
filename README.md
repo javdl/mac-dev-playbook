@@ -148,6 +148,8 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
       - [DKIM verifier](https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/?src=search)
       - [Thunderbird Conversations view](https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/) &ndash; makes mailbox more efficient & checks settings like offline storage, global search etc.
       - [Quicktext](https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/) &ndash; Templates\
+  1. Thunderbird scaling for 4K display: Preferences > General > scroll to
+     bottom > Config Editor > Search for `pixel and set `layout.css.devPixelsPerPx` to 1.5 or 2 (doesn't change everything). Also, change font size to 24px, that will change the size for reading emails but not the list of emails.
   1. Download books and put into Calibre
   2. [setup git-sync](https://github.com/Joostvanderlaan/git-sync) for git repos that need auto-sync like notes repo
   3. git-annex file management / backup folder sync, full overview
