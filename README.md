@@ -31,8 +31,8 @@ This is a work in progress, and is mostly a means for me to document my current 
      eval $(/opt/homebrew/bin/brew shellenv)
      ```
   3. Clone this repository to your local drive. `git clone https://github.com/Joostvanderlaan/mac-dev-playbook.git`
-  4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
-  5. Run `ansible-playbook main.yml -i inventory --ask-become-pass` inside this directory. Enter your account password when prompted. Or only the homebrew stuff with `ansible-playbook main.yml -i inventory -K --tags "homebrew" --ask-become-pass`
+  4. Go into this repo directory `cd mac-dev-playbook` and run `ansible-galaxy install -r requirements.yml` to install required Ansible roles.
+  5. Run `ansible-playbook main.yml -i inventory --ask-become-pass`. Enter your account password when prompted. Or only the homebrew stuff with `ansible-playbook main.yml -i inventory -K --tags "homebrew" --ask-become-pass`
 
 ### Alternatively, install Ansible manually:
   3. [Install Ansible](http://docs.ansible.com/intro_installation.html). (pip install)
