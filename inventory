@@ -1,2 +1,3 @@
-#[all]
-#127.0.0.1  ansible_connection=local
+# Comment out the below when working with a remote machine
+[all]
+127.0.0.1  ansible_connection=local
