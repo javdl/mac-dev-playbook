@@ -20,7 +20,22 @@ This is a work in progress, and is mostly a means for me to document my current 
 
   1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
   1. Enable Rosetta2 `/usr/sbin/softwareupdate --install-rosetta --agree-to-license`
-  2. [Install Ansible](http://docs.ansible.com/intro_installation.html). (pip install)
+  1. Install [Homebrew](https://brew.sh/) ```bash
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          ```
+          Add Homebrew to your **PATH**: (the installer will tell you to)
+  1. `brew install ansible`
+     Add to path:
+     ```
+     echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
+     eval $(/opt/homebrew/bin/brew shellenv)
+     ```
+  3. Clone this repository to your local drive. `git clone https://github.com/Joostvanderlaan/mac-dev-playbook.git`
+  4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
+  5. Run `ansible-playbook main.yml -i inventory --ask-become-pass` inside this directory. Enter your account password when prompted. Or only the homebrew stuff with `ansible-playbook main.yml -i inventory -K --tags "homebrew" --ask-become-pass`
+
+### Alternatively, install Ansible manually:
+  3. [Install Ansible](http://docs.ansible.com/intro_installation.html). (pip install)
       ```shell
       # install pip
       curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -28,15 +43,7 @@ This is a work in progress, and is mostly a means for me to document my current 
       # install ansible
       python3 -m pip install --user ansible
       ```
-       1. In case of cryptography.io complaining about missing Rust: 
-          ```bash
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          ```
-          Add Homebrew to your **PATH**: (the installer will tell you to)
-          ```
-          echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
-          eval $(/opt/homebrew/bin/brew shellenv)
-          ```
+       1. In case of cryptography.io complaining about missing Rust (first install brew, see above): 
           Install Rust:
           ```
           brew install openssl@1.1 rust
@@ -46,9 +53,6 @@ This is a work in progress, and is mostly a means for me to document my current 
           env LDFLAGS="-L$(brew --prefix openssl@1.1)/lib" CFLAGS="-I$(brew --prefix openssl@1.1)/include" pip install cryptography
           ```
           Re-run the ansible install above
-  3. Clone this repository to your local drive. `git clone https://github.com/Joostvanderlaan/mac-dev-playbook.git`
-  4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
-  5. Run `ansible-playbook main.yml -i inventory --ask-become-pass` inside this directory. Enter your account password when prompted. Or only the homebrew stuff with `ansible-playbook main.yml -i inventory -K --tags "homebrew" --ask-become-pass`
 
 ### Use with a remote Mac
 
