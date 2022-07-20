@@ -62,11 +62,9 @@ homebrew_installed_packages: # - ansible # Installed via Pip.
   - nvm
   - p7zip
   - ssh-copy-id
-  - cowsay
   - readline
   # - terraform
   - tmux
-  - thefuck
   - openssl
   - pv
   - webp
@@ -87,8 +85,8 @@ homebrew_cask_apps:
   - chromedriver
   - darktable
   - docker
+  - element
   # - digikam
-  - dropbox
   - figma
   - firefox
   - gimp
@@ -99,6 +97,7 @@ homebrew_cask_apps:
   - inkscape
   - libreoffice
   - licecap
+  - mailmate
   - postman
   - sequel-pro
   - signal
