@@ -128,6 +128,18 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
 
   1. Turn on **FileVault** under Security & Privacy preferences.
   1. **[Generate SSH key](https://docs.gitlab.com/ee/ssh/#ed25519-ssh-keys)** and add to GitLab & GitHub
+  1. Add ssh key to keychain, so you don't have to retype the password each time you push/pull etc.
+     In the latest version of MacOS (12.0 Monterey), just do this once:
+     ```
+     ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+     ```
+     `.ssh/config` file, add the following lines:
+      ```
+       Host *
+         UseKeychain yes
+         AddKeysToAgent yes
+         IdentityFile ~/.ssh/id_ed25519
+      ```
   1. setup git details
       ```
       git config --global user.name "Your Name" /
