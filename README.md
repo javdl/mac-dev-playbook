@@ -133,7 +133,7 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
      ```
      ssh-add --apple-use-keychain ~/.ssh/id_ed25519
      ```
-     `.ssh/config` file, add the following lines:
+     `vim ~/.ssh/config` file, add the following lines:
       ```
        Host *
          UseKeychain yes
