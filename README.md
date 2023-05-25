@@ -127,8 +127,12 @@ Finally, there are a few other preferences and settings added on for various app
 It's my hope that I can get the rest of these things wrapped up into Ansible playbooks soon, but for now, these steps need to be completed manually (assuming you already have Xcode and Ansible installed, and have run this playbook).
 
   1. Turn on **FileVault** under Security & Privacy preferences.
-  1. **[Generate SSH key](https://docs.gitlab.com/ee/ssh/#ed25519-ssh-keys)** and add to GitLab & GitHub
-  1. Add ssh key to keychain, so you don't have to retype the password each time you push/pull etc.
+  2. turn off double-space yields `.`
+      1. ⌘+Space, type: KeyboardSettings
+      2. Click Text Input → Input sources → Edit
+      3. Uncheck "Add full stop with double-space"
+  4. **[Generate SSH key](https://docs.gitlab.com/ee/ssh/#ed25519-ssh-keys)** and add to GitLab & GitHub
+  5. Add ssh key to keychain, so you don't have to retype the password each time you push/pull etc.
      In the latest version of MacOS (12.0 Monterey), just do this once:
      ```
      ssh-add --apple-use-keychain ~/.ssh/id_ed25519
@@ -198,11 +202,11 @@ chmod u+w /opt/homebrew
 ## Manual install
 
 ```
-brew install autoconf baobab bash-completion erlang gettext gifsicle git gh glab go gpg htop httpie hugo imagemagick iperf libevent pandoc sqlite mcrypt nethogs nmap node nvm p7zip ssh-copy-id cowsay readline terraform tmux thefuck openssl pv webp wget wrk
+brew install autoconf baobab bash-completion cloudflare-wrangler2 erlang gettext gifsicle git gh glab go gpg htop httpie hugo imagemagick iperf libevent pandoc sqlite mcrypt nethogs nmap node nvm p7zip ssh-copy-id cowsay readline terraform tmux thefuck openssl pv webp wget wrk
 ```
 
 ```
-brew install authy bitwarden calibre chromedriver darktable docker digikam dropbox figma firefox gimp google-chrome google-drive-file-stream google-photos-backup-and-sync handbrake inkscape libreoffice licecap postman sequel-pro signal spotify sublime-text thunderbird visual-studio-code vlc
+brew install --cask ableton-live-suite audio-hijack alacritty anaconda affinity-photo authy balenaetcher bitwarden brave-browser caldigit-docking-utility calibre chromedriver cloudflare-warp darktable descript diffusionbee digikam discord docker element dropbox figma firefox geekbench gimp github google-chrome google-cloud-sdk google-drive-file-stream google-photos-backup-and-sync handbrake hype inkscape insomnia insync izotope-product-portal jellyfin kaleidoscope kobo kodi libreoffice licecap loopback native-access nextcloud obs obsidian onionshare parsec postman protonvpn qbittorrent reaper rectangle sequel-pro session signal soundsource soundtoys softube-central spitfire-audio spotify sublime-text steam tdr-kotelnikov tdr-nova tdr-vos-slickeq teamviewer telegram thunderbird tidal transmission  visual-studio-code visual-studio-code-insiders vlc vnc-viewer vnc-server wacom-tablet waves-central
 ```
 
 ### Configuration to be added:
