@@ -201,10 +201,12 @@ chmod u+w /opt/homebrew
 
 ## Manual install
 
+### Homebrew Formulae
 ```
 brew install autoconf baobab bash-completion cloudflare-wrangler2 erlang gettext gifsicle git gh glab go gpg htop httpie hugo imagemagick iperf libevent pandoc sqlite mcrypt nethogs nmap node nvm p7zip ssh-copy-id cowsay readline terraform tmux thefuck openssl pv webp wget wrk
 ```
 
+### Homebrew Casks
 ```
 brew install --cask ableton-live-suite audio-hijack alacritty anaconda affinity-photo authy balenaetcher bitwarden brave-browser caldigit-docking-utility calibre chromedriver cloudflare-warp darktable descript diffusionbee digikam discord docker element dropbox figma firefox geekbench gimp github google-chrome google-cloud-sdk google-drive-file-stream google-photos-backup-and-sync handbrake hype inkscape insomnia insync izotope-product-portal jellyfin kaleidoscope kobo kodi libreoffice licecap loopback native-access nextcloud obs obsidian onionshare parsec postman protonvpn qbittorrent reaper rectangle sequel-pro session signal soundsource soundtoys softube-central spitfire-audio spotify sublime-text steam tdr-kotelnikov tdr-nova tdr-vos-slickeq teamviewer telegram thunderbird tidal transmission  visual-studio-code visual-studio-code-insiders vlc vnc-viewer vnc-server wacom-tablet waves-central
 ```
