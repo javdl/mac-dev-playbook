@@ -10,32 +10,37 @@ This is a work in progress, and is mostly a means for me to document my current 
 
 *See also*:
 
-  - Forked from: [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook) 
-  - [Boxen](https://github.com/boxen)
-  - [Battleschool](http://spencer.gibb.us/blog/2014/02/03/introducing-battleschool)
-  - [osxc](https://github.com/osxc)
-  - [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks) (the original inspiration for this project)
+- Forked from: [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
+- [Boxen](https://github.com/boxen)
+- [Battleschool](http://spencer.gibb.us/blog/2014/02/03/introducing-battleschool)
+- [osxc](https://github.com/osxc)
+- [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks) (the original inspiration for this project)
 
 ## Installation
 
   1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
   1. Enable Rosetta2 `/usr/sbin/softwareupdate --install-rosetta --agree-to-license`
   1. Install [Homebrew](https://brew.sh/) ```bash
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          ```
+          /bin/bash -c "$(curl -fsSL <https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh>)"
+
+     ```
           Add Homebrew to your **PATH**: (the installer will tell you to)
   1. `brew install ansible`
      Add to path:
+
      ```
      echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
      eval $(/opt/homebrew/bin/brew shellenv)
      ```
+
   3. Clone this repository to your local drive. `git clone https://github.com/Joostvanderlaan/mac-dev-playbook.git`
   4. Go into this repo directory `cd mac-dev-playbook` and run `ansible-galaxy install -r requirements.yml` to install required Ansible roles.
   5. Run `ansible-playbook main.yml -i inventory --ask-become-pass`. Enter your account password when prompted. Or only the homebrew stuff with `ansible-playbook main.yml -i inventory -K --tags "homebrew" --ask-become-pass`
 
-### Alternatively, install Ansible manually:
+### Alternatively, install Ansible manually
+
   3. [Install Ansible](http://docs.ansible.com/intro_installation.html). (pip install)
+
       ```shell
       # install pip
       curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -43,20 +48,25 @@ This is a work in progress, and is mostly a means for me to document my current 
       # install ansible
       python3 -m pip install --user ansible
       ```
-       1. In case of cryptography.io complaining about missing Rust (first install brew, see above): 
+
+       1. In case of cryptography.io complaining about missing Rust (first install brew, see above):
           Install Rust:
+
           ```
           brew install openssl@1.1 rust
           ```
+
           install cryptography using openssl as MacOS uses LibreSSL:
+
           ```bash
           env LDFLAGS="-L$(brew --prefix openssl@1.1)/lib" CFLAGS="-I$(brew --prefix openssl@1.1)/include" pip install cryptography
           ```
+
           Re-run the ansible install above
 
 ### Use with a remote Mac
 
-You can use this playbook to manage other Macs as well; the playbook doesn't even need to be run from a Mac at all! ([Install ansible on Ubuntu & others])(https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu) If you want to manage a remote Mac, either another Mac on your network, or a hosted Mac like the ones from [MacStadium](https://www.macstadium.com), you just need to make sure you can connect to it with SSH:
+You can use this playbook to manage other Macs as well; the playbook doesn't even need to be run from a Mac at all! ([Install ansible on Ubuntu & others])(<https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu>) If you want to manage a remote Mac, either another Mac on your network, or a hosted Mac like the ones from [MacStadium](https://www.macstadium.com), you just need to make sure you can connect to it with SSH:
 
   1. (On the Mac you want to connect to:) Go to System Preferences > Sharing.
   2. Enable 'Remote Login'.
@@ -115,7 +125,6 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
 
 ## Included Applications / Configuration (Default)
 
-
 My [dotfiles](https://github.com/geerlingguy/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 
 Finally, there are a few other preferences and settings added on for various apps and services.
@@ -134,34 +143,44 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
   4. **[Generate SSH key](https://docs.gitlab.com/ee/ssh/#ed25519-ssh-keys)** and add to GitLab & GitHub
   5. Add ssh key to keychain, so you don't have to retype the password each time you push/pull etc.
      In the latest version of MacOS (12.0 Monterey), just do this once:
+
      ```
      ssh-add --apple-use-keychain ~/.ssh/id_ed25519
      ```
+
      `vim ~/.ssh/config` file, add the following lines:
+
       ```
        Host *
          UseKeychain yes
          AddKeysToAgent yes
          IdentityFile ~/.ssh/id_ed25519
       ```
+
   1. setup git details
+
       ```
       git config --global user.name "Your Name" /
       git config --global user.email you@example.com
       ```
+
   1. Install [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
       - Download and extract, `cd ~/Downloads && ./google-cloud-sdk/install.sh`
   1. Install [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy#install)
+
       ```
       cd ~ && curl -o cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.darwin.amd64 && chmod +x cloud_sql_proxy
       ```
+
   1. Add Sublime text key
   1. Add GitLab token for glab CLI tool `glab auth login` [GitLab Access Tokens](https://gitlab.com/-/profile/personal_access_tokens)
   1. Clone all git repos. For every gitlab project in a group, use this one liner with curl, jq, tr
+
      ```
      for repo in $(curl -s --header "PRIVATE-TOKEN: your_private_token" https://<your-host>/api/v4/groups/<group_id> | jq ".projects[].ssh_url_to_repo" | tr -d '"'); do git clone $repo; done;
      ```
-     For Gitlab.com use https://gitlab.com/api/v4/groups/<group_id>
+
+     For Gitlab.com use <https://gitlab.com/api/v4/groups/><group_id>
   1. `nvm install --lts` (and edit `vi ~/.zshrc` to add nvm or through dotfiles)
   1. Add mail accounts to Thunderbird, addons:
       - [Nederlands woordenboek](https://addons.thunderbird.net/en-US/thunderbird/addon/woordenboek-nederlands/)
@@ -169,7 +188,7 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
       - [Thunderbird Conversations view](https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/) &ndash; makes mailbox more efficient & checks settings like offline storage, global search etc.
       - [Quicktext](https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/) &ndash; Templates\
   1. Thunderbird scaling for 4K display: Preferences > General > scroll to
-     bottom > Config Editor > Search for `pixel and set `layout.css.devPixelsPerPx` to 1.5 or 2 (doesn't change everything). Also, change font size to 24px, that will change the size for reading emails but not the list of emails.
+     bottom > Config Editor > Search for `pixel and set`layout.css.devPixelsPerPx` to 1.5 or 2 (doesn't change everything). Also, change font size to 24px, that will change the size for reading emails but not the list of emails.
   1. Download books and put into Calibre
   2. [setup git-sync](https://github.com/Joostvanderlaan/git-sync) for git repos that need auto-sync like notes repo
   3. git-annex file management / backup folder sync, full overview
@@ -182,8 +201,7 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
   6. Set mouse tracking rate.
   7. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
 
-
-  ### Workaround Intel vs Apple Silicon Mac
+### Workaround Intel vs Apple Silicon Mac
   
   I ran into the issue that `geerlingguy.homebrew` sets `/usr/local` as homebrew dir, which is fine for Intel macs but M1 macs should use `/opt/homebrew`. This is easily fixed by adding the var in default.config.yml, but apps were already installed by then. To remove them:
 
@@ -202,18 +220,137 @@ chmod u+w /opt/homebrew
 ## Manual install
 
 ### Homebrew Formulae
+
 ```
-brew install autoconf baobab bash-completion cloudflare-wrangler2 erlang gettext gifsicle git gh glab go gpg htop httpie hugo imagemagick iperf libevent pandoc sqlite mcrypt nethogs nmap node nvm p7zip ssh-copy-id cowsay readline terraform tmux thefuck openssl pv webp wget wrk
+brew install \
+autoconf \
+baobab \
+bash-completion \
+cloudflare-wrangler2 \
+erlang \
+gettext \
+gifsicle \
+git \
+gh \
+glab \
+go \
+gpg \
+htop \
+httpie \
+hugo \
+imagemagick \
+iperf \
+libevent \
+pandoc \
+sqlite \
+mcrypt \
+nethogs \
+nmap \
+node \
+nvm \
+p7zip \
+ssh-copy-id \
+readline \
+terraform \
+tmux \
+openssl \
+pv \
+webp \
+wget \
+wrk
 ```
 
 ### Homebrew Casks
-```
-brew install --cask ableton-live-suite audio-hijack alacritty anaconda affinity-photo authy balenaetcher bitwarden brave-browser caldigit-docking-utility calibre chromedriver cloudflare-warp darktable descript diffusionbee digikam discord docker element dropbox figma firefox geekbench gimp github google-chrome google-cloud-sdk google-drive-file-stream google-photos-backup-and-sync handbrake hype inkscape insomnia insync izotope-product-portal jellyfin kaleidoscope kobo kodi libreoffice licecap loopback native-access nextcloud obs obsidian onionshare parsec postman protonvpn qbittorrent reaper rectangle sequel-pro session signal soundsource soundtoys softube-central spitfire-audio spotify sublime-text steam tdr-kotelnikov tdr-nova tdr-vos-slickeq teamviewer telegram thunderbird tidal transmission  visual-studio-code visual-studio-code-insiders vlc vnc-viewer vnc-server wacom-tablet waves-central
+
+```shell
+brew install --cask \
+ableton-live-suite \
+audio-hijack \
+alacritty \
+anaconda \
+affinity-photo \
+authy \
+balenaetcher \
+bitwarden \
+brave-browser \
+caldigit-docking-utility \
+calibre \
+chromedriver \
+cloudflare-warp \
+darktable \
+descript \
+diffusionbee \
+digikam \
+discord \
+docker \
+element \
+dropbox \
+figma \
+firefox \
+geekbench \
+gimp \
+github \
+google-chrome \
+google-cloud-sdk \
+google-drive-file-stream \
+google-photos-backup-and-sync \
+handbrake \
+hype \
+inkscape \
+insomnia \
+insync \
+izotope-product-portal \
+jellyfin \
+kaleidoscope \
+kobo \
+kodi \
+libreoffice \
+licecap \
+loopback \
+native-access \
+nextcloud \
+obs \
+obsidian \
+onionshare \
+parsec \
+postman \
+protonvpn \
+qbittorrent \
+reaper \
+rectangle \
+sequel-pro \
+session \
+signal \
+soundsource \
+soundtoys \
+softube-central \
+spitfire-audio \
+spotify \
+sublime-text \
+steam \
+tdr-kotelnikov \
+tdr-nova \
+tdr-vos-slickeq \
+teamviewer \
+telegram \
+thunderbird \
+tidal \
+transmission \
+visual-studio-code \
+vlc \
+vnc-viewer \
+vnc-server \
+wacom-tablet \
+waves-central
+
+# currently not on brew:
+visual-studio-code-insiders
 ```
 
-### Configuration to be added:
+### Configuration to be added
 
-  - I have vim configuration in the repo, but I still need to add the actual installation:
+- I have vim configuration in the repo, but I still need to add the actual installation:
+
     ```
     mkdir -p ~/.vim/autoload
     mkdir -p ~/.vim/bundle
