@@ -283,11 +283,13 @@ diffusionbee \
 digikam \
 discord \
 docker \
+docker-toolbox \
 element \
 dropbox \
 figma \
 firefox \
 geekbench \
+gh \
 gimp \
 github \
 google-chrome \
