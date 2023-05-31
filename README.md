@@ -315,6 +315,7 @@ obs \
 obsidian \
 onionshare \
 parsec \
+pass \
 postman \
 protonvpn \
 qbittorrent \
