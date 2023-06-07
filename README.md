@@ -298,6 +298,7 @@ google-drive-file-stream \
 google-photos-backup-and-sync \
 handbrake \
 hype \
+ilok-license-manager \
 inkscape \
 insomnia \
 insync \
