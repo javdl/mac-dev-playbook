@@ -162,6 +162,8 @@ It's my hope that I can get the rest of these things wrapped up into Ansible pla
       ```
       git config --global user.name "Your Name" /
       git config --global user.email you@example.com
+      # automatically create upstream branch if not exists
+      git config --global --add --bool push.autoSetupRemote true
       ```
 
   1. Install [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
