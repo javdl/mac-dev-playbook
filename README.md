@@ -327,6 +327,7 @@ rectangle \
 sequel-pro \
 session \
 signal \
+slack \
 soundsource \
 soundtoys \
 softube-central \
