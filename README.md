@@ -229,6 +229,7 @@ autoconf \
 baobab \
 bash-completion \
 cloudflare-wrangler2 \
+direnv \
 erlang \
 gettext \
 gifsicle \
