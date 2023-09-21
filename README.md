@@ -268,8 +268,6 @@ wrk
 brew install --cask \
 ableton-live-suite \
 audio-hijack \
-alacritty \
-anaconda \
 affinity-photo \
 authy \
 balenaetcher \
@@ -298,6 +296,7 @@ google-chrome \
 google-cloud-sdk \
 google-drive-file-stream \
 google-photos-backup-and-sync \
+gpg-suite \
 handbrake \
 hype \
 ilok-license-manager \
